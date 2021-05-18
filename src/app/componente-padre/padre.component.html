@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill">
+    <mat-label>Sexo</mat-label>
+    <mat-select (selectionChange)="setSexo($event)">
+        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
+            {{sexo.viewValue}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br>
+<div *ngIf="showHombre">
+    <app-hijo-hombre></app-hijo-hombre>
+</div>
+
+<br>
+<div *ngIf="showMujer">
+    <app-hijo-mujer></app-hijo-mujer>
+</div>

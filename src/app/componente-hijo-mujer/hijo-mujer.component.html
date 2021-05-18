@@ -1,0 +1,28 @@
+<form [formGroup]="hijoForm" name="hijoForm">
+    <br>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <textarea matInput placeholder="Ejemplo: Maria" type="text" formControlName="nombre"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <textarea matInput placeholder="Ejemplo: Fernandez" type="text" formControlName="apellido"></textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <mat-radio-group (change)='onChange($event)' name="edad">
+        <mat-radio-button value="1">Mayor de edad</mat-radio-button>
+        <mat-radio-button value="2">Menor de edad</mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <br>
+</form>
