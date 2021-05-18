@@ -1,0 +1,32 @@
+<form [formGroup]="padreForm" name="padreForm">
+
+    <div>
+        <label>Nombre: </label>
+    </div>
+
+    <input type="text" placeholder="Nombre" formControlName="nombre"><br>
+
+    <div>
+        <label>Apellido: </label>
+    </div>
+
+    <input type="text" placeholder="Apellido" formControlName="apellido"><br>
+
+    <div>
+        <label>DNI: </label>
+    </div>
+
+    <input type="number" placeholder="DNI" formControlName="dni"><br>
+
+    <div>
+        <label>Edad: </label>
+    </div>
+
+    <input type="number" placeholder="Edad" formControlName="edad"><br>
+
+</form>
+
+<br>
+<button mat-flat-button color="primary"(click)="setHijo()"> Setear </button>
+
+<app-hijo [hijo]='padre'></app-hijo>
