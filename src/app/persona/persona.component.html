@@ -1,0 +1,53 @@
+<form [formGroup]="personaForm" name="personaForm" class="form">
+
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="nombre" matInput placeholder="nombre">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Peso</mat-label>
+      <input formControlName="peso" maxlength="2" matInput placeholder="peso">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input formControlName="fechaNac" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Genero</mat-label>
+      <mat-select (selectionChange)="setGenero($event)">
+        <mat-option *ngFor="let genero of generos" [value]="genero.value">
+          {{genero.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <mat-radio-group aria-label="Select an option" (change)='onChange($event)' formControlName="estadoCivil">
+    <mat-radio-button value="Casado"> Casado </mat-radio-button>
+    <mat-radio-button value="Soltero"> Soltero </mat-radio-button>
+    <mat-radio-button value="Viudo"> Viudo </mat-radio-button>
+  </mat-radio-group>
+
+</form>
+
+<br>
+<button (click)='onClick()'>Enviar</button>
+
+<div *ngIf="persona">
+  <app-recepcionista [dataPersona]="persona" (nombreEvento)="recibePersona($event)"></app-recepcionista>
+
+  <div *ngIf="retornaValor">
+    Peso en Libras desde recepcionista : {{retornaValor}}
+  </div>
